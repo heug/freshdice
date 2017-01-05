@@ -35,7 +35,7 @@ class Game {
     //   results.push(roll);
     //   sentence += roll + ' ';
     // }
-    var results = [1,1,2,2,3,3];
+    var results = [1,1,2,2,3,3];  
     // var results = [1,2,3,4,5,6];
     console.log(sentence);
     this.determineScore(results);
