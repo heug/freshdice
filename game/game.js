@@ -14,7 +14,7 @@ class Game {
       } else {
         round[arr[i]] = 1;
       }
-    }
+    }l
     if (arr.length === 6) {
       if (Object.keys(round).length === 6) {
         score += 1500;
@@ -61,5 +61,4 @@ class Game {
   }
 }
 
-var test = new Game(5);
-test.roll();
+export default Game;
