@@ -1,4 +1,5 @@
-const Game = require('./game/game');
+const Game = require('./build/main.bundle.js');
+// import Game from './build/main.bundle.js';
 
 const express = require('express');
 
@@ -9,4 +10,5 @@ app.get('/game/roll', function(req, res) {
 	console.log(game.roll(req.query.num));
 })
 
+console.log('Listening on port 3000');
 app.listen(3000);
