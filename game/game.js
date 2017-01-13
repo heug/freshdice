@@ -7,18 +7,21 @@ class Game {
 
   determineScore(arr) {
     var round = {};
-    var score = 0;
+    // var score = 0;
+    // Determine number of dies rolled for each value
     for (var i = 0; i < arr.length; i++) {
       if (round[arr[i]]) {
         round[arr[i]]++;
       } else {
         round[arr[i]] = 1;
       }
-    }l
+    }
+    // Special 6-die results
     if (arr.length === 6) {
       if (Object.keys(round).length === 6) {
-        score += 1500;
-        console.log('You rolled a straight! ' + score);
+        // score += 1500;
+        console.log('You rolled a straight!');
+        return 1500;
       }
       var doublesCount = 0;
       for (var die in round) {
@@ -26,12 +29,14 @@ class Game {
           doublesCount++;
         }
         if (doublesCount === 3) {
-          score += 1000;
-          console.log('You rolled three pair! ' + score);
+          // score += 500;
+          console.log('You rolled three pair!');
+          return 500;
         }
       }
     }
-
+    // Regular scoring rules
+    var score = 0;
     for (var die in round) {
       if (round[die] >= 3) {
         score += die * (die == 1 ? 1000 : 100) * Math.max(round[die] - 2, 1);
@@ -39,24 +44,21 @@ class Game {
         score += round[die] * die * (die == 1 ? 100 : 10);
       }
     }
-    console.log(score);
-    console.log(round);
-    
+    return score;
+
   }
 
   roll(numDice) {
     numDice = numDice || 6;
     console.log('Rolling ' + numDice + ' dice');
-    // var results = [];
+    var results = [];
     var sentence = 'You rolled ';
-    // for (var i = 0; i < numDice; i++) {
-    //   var roll = Math.ceil(Math.random() * 6);
-    //   results.push(roll);
-    //   sentence += roll + ' ';
-    // }
-    var results = [1,2,2,4,3,3];  
-    // var results = [1,2,3,4,5,6];
-    // console.log(sentence);
+    for (var i = 0; i < numDice; i++) {
+      var roll = Math.ceil(Math.random() * 6);
+      results.push(roll);
+      sentence += roll + ' ';
+    }
+    console.log(sentence);
     this.determineScore(results);
   }
 }
