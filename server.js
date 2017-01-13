@@ -5,8 +5,8 @@ const app = express();
 
 app.get('/game/roll', function(req, res) {
 	let instance = new game.default(2);
-	var score = instance.roll(req.query.num);
-	res.json({ points: score });
+	var result = instance.roll(req.query.num);
+	res.json({ points: result.score, dice: result.round });
 });
 
 

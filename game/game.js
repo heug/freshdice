@@ -43,7 +43,7 @@ class Game {
         score += round[die] * die * (die == 1 ? 100 : 10);
       }
     }
-    return score;
+    return { round: round, score: score };
   }
 
   roll(numDice) {
