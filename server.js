@@ -6,9 +6,7 @@ const app = express();
 app.get('/game/roll', function(req, res) {
 	let instance = new game.default(2);
 	var score = instance.roll(req.query.num);
-	console.log(score);
-	res.setHeader('Content-Type', 'application/json');
-	res.send(JSON.stringify({ 'points': score }));
+	res.json({ points: score });
 });
 
 

@@ -7,7 +7,7 @@ class Game {
 
   determineScore(arr) {
     var round = {};
-    // var score = 0;
+    var score = 0;
     // Determine number of dies rolled for each value
     for (var i = 0; i < arr.length; i++) {
       if (round[arr[i]]) {
@@ -36,7 +36,6 @@ class Game {
       }
     }
     // Regular scoring rules
-    var score = 0;
     for (var die in round) {
       if (round[die] >= 3) {
         score += die * (die == 1 ? 1000 : 100) * Math.max(round[die] - 2, 1);
@@ -45,7 +44,6 @@ class Game {
       }
     }
     return score;
-
   }
 
   roll(numDice) {
@@ -59,7 +57,7 @@ class Game {
       sentence += roll + ' ';
     }
     console.log(sentence);
-    this.determineScore(results);
+    return this.determineScore(results);
   }
 }
 
